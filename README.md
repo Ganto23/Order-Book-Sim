@@ -2,6 +2,8 @@
 
 An interactive limit order book simulator with a Streamlit frontend for education and exploration of market microstructure mechanics.
 
+You can find this app at https://order-book-sim.streamlit.app.
+
 ## 📊 Project Overview
 
 This Order Book Simulator provides a realistic simulation of a central limit order book with multiple trader types. It's designed as an educational tool to understand:

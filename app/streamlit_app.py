@@ -227,6 +227,46 @@ def main():
         padding-bottom: 0.3rem;
     }}
     
+    /* Fix sidebar text color specifically */
+    section[data-testid="stSidebar"] p,
+    section[data-testid="stSidebar"] span,
+    section[data-testid="stSidebar"] label,
+    section[data-testid="stSidebar"] .stMarkdown,
+    section[data-testid="stSidebar"] .stSelectbox,
+    section[data-testid="stSidebar"] .stSlider span,
+    section[data-testid="stSidebar"] .stNumberInput span {{
+        color: #111 !important;
+    }}
+
+    /* Ensure sidebar input labels are visible */
+    section[data-testid="stSidebar"] [data-testid="stWidgetLabel"] {{
+        color: #111 !important;
+        font-weight: 500;
+    }}
+    
+    /* Style expander title labels in sidebar */
+    section[data-testid="stSidebar"] details summary p {{
+        color: var(--navy-blue) !important;
+        font-weight: 500;
+    }}
+    
+    /* Fix for sidebar expander content text - ensure it's black when expanded */
+    section[data-testid="stSidebar"] details[open] p,
+    section[data-testid="stSidebar"] details[open] label,
+    section[data-testid="stSidebar"] details[open] span,
+    section[data-testid="stSidebar"] details[open] .stSlider span,
+    section[data-testid="stSidebar"] details[open] .stNumberInput span {{
+        color: #111 !important; 
+        opacity: 1 !important;
+    }}
+    
+    /* Fix for the slider value labels specifically within expanders */
+    section[data-testid="stSidebar"] details[open] .st-emotion-cache-1b0dbw8 span[data-testid="stWidgetLabel"],
+    section[data-testid="stSidebar"] .st-emotion-cache-1b0dbw8 p,
+    section[data-testid="stSidebar"] details .st-emotion-cache-1b0dbw8 p {{
+        color: #111 !important;
+    }}
+    
     /* Style buttons */
     .stButton>button {{
         color: white;
@@ -291,49 +331,109 @@ def main():
     /* Style expanders - consolidated selectors */
     /* Expander header */
     .st-emotion-cache-1a65o5c, [data-testid="stExpander"] > div:first-child {{
-        color: white !important;
+        color: #111 !important;
         font-weight: 600;
-        background-color: var(--midnight-blue) !important;
+        background-color: #f0f2f5 !important; /* Light background for header */
         padding: 10px 15px !important;
         border-radius: 10px 10px 0 0 !important;
+        border: 1px solid var(--desert-sun) !important;
     }}
     
     /* Expander content */
     .st-emotion-cache-j7qwjs, 
     [data-testid="stExpander"] details[open] div.stMarkdown,
     .element-container .stExpander details[open] .stMarkdown div {{
-        background-color: var(--midnight-blue) !important;
-        color: white !important;
+        background-color: #f8f9fa !important; /* Light background */
+        color: #111 !important; /* Dark text */
         padding: 15px !important;
         border-radius: 0 0 10px 10px !important;
         border: 1px solid var(--desert-sun) !important;
         border-top: none !important;
     }}
     
-    /* Text in expanders */
-    [data-testid="stExpander"] details[open] div.stMarkdown p,
-    [data-testid="stExpander"] details[open] div.stMarkdown li,
-    .element-container .stExpander details[open] .stMarkdown div p,
-    .element-container .stExpander details[open] .stMarkdown div li {{
-        color: white !important;
+    /* Fix for expander title text visibility */
+    [data-testid="stExpander"] summary {{
+        color: #111 !important;
+        opacity: 1 !important;
+        font-weight: bold !important;
+    }}
+
+    /* Style for expander headers when collapsed */
+    .streamlit-expanderHeader {{
+        color: #111 !important;
+        background-color: #f0f2f5 !important;
+        border-radius: 5px !important;
+    }}
+    
+    /* Target the specific "What is..." expander headers */
+    [data-testid="stExpander"] [aria-expanded="false"] p,
+    [data-testid="stExpander"] [aria-expanded="true"] p {{
+        color: #111 !important;
+    }}
+    
+    /* Fix for all text elements within expanders */
+    [data-testid="stExpander"] details[open] p,
+    [data-testid="stExpander"] details[open] li,
+    [data-testid="stExpander"] details[open] ul,
+    [data-testid="stExpander"] details[open] ol,
+    .stExpander details[open] div.stMarkdown p,
+    .stExpander details[open] div.stMarkdown li,
+    .stExpander details[open] div.stMarkdown ul,
+    .stExpander details[open] div.stMarkdown ol {{
+        color: #111 !important; /* Dark text */
+        opacity: 1 !important;
     }}
     
     /* Strong/bold text in expanders */
     [data-testid="stExpander"] details[open] div.stMarkdown strong,
     [data-testid="stExpander"] details[open] div.stMarkdown b,
     .element-container .stExpander details[open] .stMarkdown div strong {{
-        color: var(--desert-sun) !important;
+        color: var(--navy-blue) !important; /* Dark blue for emphasis */
+        opacity: 1 !important;
     }}
 
-    /* Alert styling */
-    div[data-testid="stAlert"] {{
-        border-color: var(--desert-sun) !important;
+    /* Fix for the specific styled text elements in expanders to override the global text color */
+    [data-testid="stExpander"] p,
+    [data-testid="stExpander"] li,
+    [data-testid="stExpander"] span {{
+        color: #111 !important;
+        opacity: 1 !important;
     }}
-
-    .stAlert {{
-        background-color: rgba(4, 81, 116, 0.1);
-        border-left-color: var(--navy-blue) !important;
+    
+    /* Make sure text in widgets (e.g., sidebar) is also readable */
+    label, .stSelectbox, .stSlider, .stNumberInput {{
+        color: #111 !important;
     }}
+    
+    /* Dataframe text color */
+    .dataframe {{
+        color: #111 !important;
+    }}
+    
+    /* Info boxes should have readable text */
+    .stInfo p {{
+        color: #111 !important;
+    }}
+    
+    /* Fix for light blue boxes with low contrast text */
+    div.stAlert.st-ai, 
+    div.element-container div.stAlert, 
+    .st-emotion-cache-16idsys,
+    .st-emotion-cache-16idsys p {{
+        color: #111 !important;
+        font-weight: 500 !important;
+    }}
+    
+    /* Ensure all text in info boxes is readable regardless of theme */
+    .stAlert p, 
+    .stAlert span,
+    div[data-baseweb="notification"] p,
+    div[data-baseweb="notification"] span {{
+        color: #111 !important;
+        opacity: 1 !important;
+    }}
+    
+    /* Style metrics */
     </style>
     """, unsafe_allow_html=True)
 
